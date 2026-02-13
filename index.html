@@ -20,7 +20,7 @@ flex-direction:column;
 }
 
 .wrapper{
-max-width:1000px;
+max-width:1100px;
 width:100%;
 padding:24px;
 margin:auto;
@@ -72,65 +72,68 @@ box-shadow:0 10px 30px rgba(0,0,0,.08);
 .hero h1{margin-bottom:8px;color:#111827}
 .hero p{color:#6b7280}
 
-/* CARDS */
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 }
 
+/* CARD BASE */
 .card{
-background:white;
 border-radius:16px;
 padding:24px;
-box-shadow:0 10px 30px rgba(0,0,0,.1);
+box-shadow:0 10px 30px rgba(0,0,0,.12);
 transition:.3s;
 position:relative;
 overflow:hidden;
+color:white;
 }
 
 .card:hover{transform:translateY(-6px)}
 
-.card h2{margin-bottom:6px;color:#111827}
-.card p{font-size:14px;color:#6b7280;margin-bottom:12px}
-
 .quiz-btn{
 display:inline-block;
 padding:10px 14px;
-background:#2563eb;
-color:white;
 border-radius:8px;
 text-decoration:none;
 font-size:14px;
 font-weight:600;
-}
-
-/* SSC BACKGROUND CARD */
-.ssc-card{
-background-image:url('assets/ssc-bg.jpg');
-background-size:cover;
-background-position:center;
 color:white;
 }
 
-.ssc-card::before{
+/* IMAGE CARD COMMON */
+.image-card{
+background-size:cover;
+background-position:center;
+}
+
+.image-card::before{
 content:'';
 position:absolute;
 inset:0;
 background:rgba(0,0,0,0.45);
 }
 
-.ssc-card h2,
-.ssc-card p,
-.ssc-card a{
+.image-card h2,
+.image-card p,
+.image-card a{
 position:relative;
 z-index:1;
 color:white;
 }
 
-.ssc-card .quiz-btn{
-background:#22c55e;
-}
+/* SECTION IMAGES */
+.ssc-card{background-image:url('assets/ssc.jpg')}
+.upsc-card{background-image:url('assets/upsc.jpg')}
+.railway-card{background-image:url('assets/railway.jpg')}
+.banking-card{background-image:url('assets/banking.jpg')}
+
+/* BUTTON COLORS */
+.ssc-card .quiz-btn{background:#22c55e}
+.upsc-card .quiz-btn{background:#f59e0b}
+.railway-card .quiz-btn{background:#ef4444}
+.banking-card .quiz-btn{background:#10b981}
 
 /* FOOTER */
 footer{
@@ -177,17 +180,27 @@ color:#6b7280;
 
 <div class="grid">
 
-<!-- SSC WITH BACKGROUND -->
-<div class="card ssc-card">
+<div class="card image-card ssc-card">
 <h2>SSC Exams</h2>
 <p>CGL • CHSL • GD • MTS</p>
 <a class="quiz-btn" href="exams/ssc/index.html">Start Quiz</a>
 </div>
 
-<!-- NORMAL CARD -->
-<div class="card">
+<div class="card image-card upsc-card">
 <h2>UPSC Exams</h2>
 <p>Prelims & Mains</p>
+<a class="quiz-btn" href="#">Coming Soon</a>
+</div>
+
+<div class="card image-card railway-card">
+<h2>Railway Exams</h2>
+<p>RRB NTPC • Group D</p>
+<a class="quiz-btn" href="#">Coming Soon</a>
+</div>
+
+<div class="card image-card banking-card">
+<h2>Banking Exams</h2>
+<p>SBI • IBPS • RBI</p>
 <a class="quiz-btn" href="#">Coming Soon</a>
 </div>
 
@@ -196,7 +209,6 @@ color:#6b7280;
 </div>
 
 <footer>
-
 <div class="footer-socials">
   <a class="telegram" href="https://t.me/yourchannel" target="_blank">
     <i class="fab fa-telegram"></i>
@@ -205,9 +217,7 @@ color:#6b7280;
     <i class="fab fa-whatsapp"></i>
   </a>
 </div>
-
 <p>© 2026 RANKUP • Practice Daily, Rank Higher</p>
-
 </footer>
 
 <!-- FIREBASE -->
