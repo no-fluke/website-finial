@@ -2,160 +2,111 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RANKUP | Home</title>
+<title>SSC Exams | RANKUP</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+* { box-sizing: border-box; }
 
-body{
-font-family:Poppins,sans-serif;
-background:linear-gradient(135deg,#e0f2fe,#f8fafc);
-min-height:100vh;
-display:flex;
-flex-direction:column;
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
-.wrapper{
-max-width:1100px;
-width:100%;
-padding:24px;
-margin:auto;
-flex:1;
+.wrapper {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
 }
 
 /* HEADER */
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
-.brand{
-display:flex;
-align-items:center;
-gap:10px;
-font-size:22px;
-font-weight:700;
-color:#111827;
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
 }
 
-.brand img{
-width:38px;
-height:38px;
-border-radius:8px;
+.back-link {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4f46e5;
 }
 
-.nav a,.nav button{
-color:#2563eb;
-background:none;
-border:none;
-font-weight:600;
-cursor:pointer;
-font-size:14px;
-text-decoration:none;
+/* TITLE */
+.page-title {
+  margin-bottom: 22px;
 }
 
-/* HERO */
-.hero{
-background:white;
-padding:30px;
-border-radius:16px;
-margin-bottom:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+.page-title h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #111827;
 }
 
-.hero h1{margin-bottom:8px;color:#111827}
-.hero p{color:#6b7280}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+.page-title p {
+  margin: 6px 0 0;
+  color: #4b5563;
+  font-size: 15px;
 }
 
-/* CARD BASE */
-.card{
-border-radius:16px;
-padding:24px;
-box-shadow:0 10px 30px rgba(0,0,0,.12);
-transition:.3s;
-position:relative;
-overflow:hidden;
-color:white;
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: 0.25s ease;
 }
 
-.card:hover{transform:translateY(-6px)}
-
-.quiz-btn{
-display:inline-block;
-padding:10px 14px;
-border-radius:8px;
-text-decoration:none;
-font-size:14px;
-font-weight:600;
-color:white;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
 }
 
-/* IMAGE CARD COMMON */
-.image-card{
-background-size:cover;
-background-position:center;
+.card h2 {
+  margin: 0;
+  font-size: 19px;
+  color: #111827;
 }
 
-.image-card::before{
-content:'';
-position:absolute;
-inset:0;
-background:rgba(0,0,0,0.45);
+.card p {
+  margin: 0;
+  font-size: 14px;
+  color: #4b5563;
 }
 
-.image-card h2,
-.image-card p,
-.image-card a{
-position:relative;
-z-index:1;
-color:white;
+/* BUTTON */
+.btn {
+  margin-top: 8px;
+  padding: 10px 16px;
+  background: #4f46e5;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  width: fit-content;
+  transition: 0.2s;
 }
 
-/* SECTION IMAGES */
-.ssc-card{background-image:url('assets/ssc.jpg')}
-.upsc-card{background-image:url('assets/upsc.jpg')}
-.railway-card{background-image:url('assets/railway.jpg')}
-.banking-card{background-image:url('assets/banking.jpg')}
-
-/* BUTTON COLORS */
-.ssc-card .quiz-btn{background:#22c55e}
-.upsc-card .quiz-btn{background:#f59e0b}
-.railway-card .quiz-btn{background:#ef4444}
-.banking-card .quiz-btn{background:#10b981}
-
-/* FOOTER */
-footer{
-background:white;
-padding:18px;
-text-align:center;
-box-shadow:0 -5px 20px rgba(0,0,0,.05);
-}
-
-.footer-socials a{
-font-size:22px;
-margin:0 10px;
-text-decoration:none;
-}
-
-.telegram{color:#229ED9}
-.whatsapp{color:#25D366}
-
-footer p{
-margin-top:8px;
-font-size:13px;
-color:#6b7280;
+.btn:hover {
+  background: #4338ca;
 }
 </style>
 </head>
@@ -165,94 +116,35 @@ color:#6b7280;
 <div class="wrapper">
 
 <header>
-<div class="brand">
-  <img src="assets/logo.png" alt="RankUp Logo">
-  RANKUP
-</div>
-
-<div class="nav" id="navArea"></div>
+  <div class="brand">RANKUP</div>
+  <a class="back-link" href="../../index.html">← Back to Home</a>
 </header>
 
-<div class="hero">
-<h1>Practice. Improve. Rank.</h1>
-<p>Daily quizzes, leaderboard & exam preparation.</p>
+<div class="page-title">
+  <h1>SSC Exams</h1>
+  <p>Select your SSC exam and start practicing</p>
 </div>
 
-<div class="grid">
-
-<div class="card image-card ssc-card">
-<h2>SSC Exams</h2>
-<p>CGL • CHSL • GD • MTS</p>
-<a class="quiz-btn" href="exams/ssc/index.html">Start Quiz</a>
+<div class="card">
+  <h2>SSC CGL</h2>
+  <p>Combined Graduate Level – Topic & full mock tests</p>
+  <a class="btn" href="cgl/index.html">Explore CGL</a>
 </div>
 
-<div class="card image-card upsc-card">
-<h2>UPSC Exams</h2>
-<p>Prelims & Mains</p>
-<a class="quiz-btn" href="#">Coming Soon</a>
+<div class="card">
+  <h2>SSC CHSL</h2>
+  <p>Combined Higher Secondary Level practice tests</p>
+  <a class="btn" href="chsl/index.html">Explore CHSL</a>
 </div>
 
-<div class="card image-card railway-card">
-<h2>Railway Exams</h2>
-<p>RRB NTPC • Group D</p>
-<a class="quiz-btn" href="#">Coming Soon</a>
-</div>
-
-<div class="card image-card banking-card">
-<h2>Banking Exams</h2>
-<p>SBI • IBPS • RBI</p>
-<a class="quiz-btn" href="#">Coming Soon</a>
+<div class="card">
+  <h2>SSC GD</h2>
+  <p>General Duty – topic-wise & mock tests</p>
+  <a class="btn" href="gd/index.html">Explore GD</a>
 </div>
 
 </div>
-
-</div>
-
-<footer>
-<div class="footer-socials">
-  <a class="telegram" href="https://t.me/yourchannel" target="_blank">
-    <i class="fab fa-telegram"></i>
-  </a>
-  <a class="whatsapp" href="https://wa.me/yourlink" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-</div>
-<p>© 2026 RANKUP • Practice Daily, Rank Higher</p>
-</footer>
-
-<!-- FIREBASE -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
-<script>
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "ssc-journey.firebaseapp.com",
-  projectId: "ssc-journey"
-};
-
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const nav = document.getElementById("navArea");
-
-auth.onAuthStateChanged(user => {
-  if (user) {
-    nav.innerHTML = `
-      <span style="margin-right:10px;font-size:14px">
-        ${user.displayName || user.email}
-      </span>
-      <button id="logoutBtn">Logout</button>
-    `;
-
-    document.getElementById("logoutBtn").onclick = () => {
-      auth.signOut().then(()=>location.reload());
-    };
-
-  } else {
-    nav.innerHTML = `<a href="login.html">Login</a>`;
-  }
-});
-</script>
 
 </body>
 </html>
+
