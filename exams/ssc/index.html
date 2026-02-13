@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SSC Exams | RANKUP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.back-link {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.page-title {
+  margin-bottom: 20px;
+}
+
+.page-title h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #111827;
+}
+
+.page-title p {
+  margin: 6px 0 0;
+  color: #4b5563;
+  font-size: 15px;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #111827;
+}
+
+.card p {
+  margin: 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.btn {
+  margin-top: 6px;
+  padding: 10px 14px;
+  background: #4f46e5;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.btn:hover {
+  background: #4338ca;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<header>
+  <div class="brand">RANKUP</div>
+  <a class="back-link" href="../../index.html">← Back to Home</a>
+</header>
+
+<div class="page-title">
+  <h1>SSC Exams</h1>
+  <p>Select your SSC exam and start practicing</p>
+</div>
+
+<div class="card">
+  <h2>SSC CGL</h2>
+  <p>Combined Graduate Level – Topic & full mock tests</p>
+  <a class="btn" href="cgl/index.html">Explore CGL</a>
+</div>
+
+<div class="card">
+  <h2>SSC CHSL</h2>
+  <p>Combined Higher Secondary Level practice tests</p>
+  <a class="btn" href="chsl/index.html">Explore CHSL</a>
+</div>
+
+<div class="card">
+  <h2>SSC GD</h2>
+  <p>General Duty – topic-wise & mock tests</p>
+  <a class="btn" href="gd/index.html">Explore GD</a>
+</div>
+
+</div>
+
+</body>
+</html>
