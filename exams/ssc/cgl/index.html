@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SSC CGL | RANKUP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.back {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+h2 { margin-top: 0; color: #111827; }
+p { color: #4b5563; font-size: 15px; }
+
+/* TOGGLE BUTTON */
+.toggle-btn {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* SLIDER AREA */
+.quiz-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  margin-top: 10px;
+}
+
+/* LIST ITEMS */
+.quiz-item {
+  display: block;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #111827;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.quiz-item:hover {
+  background: #e5e7eb;
+  transform: translateX(4px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<header>
+  <div class="brand">SSC CGL</div>
+  <a class="back" href="../index.html">← Back to SSC</a>
+</header>
+
+<!-- TOPIC WISE -->
+<div class="card">
+  <h2>Topic-wise Quizzes</h2>
+  <p>Practice individual subjects for SSC CGL</p>
+
+  <button class="toggle-btn" onclick="toggleSection('topicList', this)">
+    Show Quizzes ▼
+  </button>
+
+  <div class="quiz-list" id="topicList">
+    <a class="quiz-item" href="topic/GS_GK_CGL_MAINS_ENGLISH (1).html">General Studies</a>
+    <a class="quiz-item" href="topic/history.html">History</a>
+    <a class="quiz-item" href="topic/geography.html">Geography</a>
+    <a class="quiz-item" href="topic/economics.html">Economics</a>
+  </div>
+</div>
+
+<!-- FULL MOCK -->
+<div class="card">
+  <h2>Full Length Mock Tests</h2>
+  <p>Complete SSC CGL mock exams</p>
+
+  <button class="toggle-btn" onclick="toggleSection('mockList', this)">
+    Show Mocks ▼
+  </button>
+
+  <div class="quiz-list" id="mockList">
+    <a class="quiz-item" href="full/mock1.html">Mock Test 1</a>
+    <a class="quiz-item" href="full/mock2.html">Mock Test 2</a>
+  </div>
+</div>
+
+</div>
+
+<script>
+function toggleSection(id, btn) {
+  const section = document.getElementById(id);
+
+  if (section.style.maxHeight) {
+    section.style.maxHeight = null;
+    btn.innerHTML = btn.innerHTML.replace("▲", "▼");
+  } else {
+    section.style.maxHeight = section.scrollHeight + "px";
+    btn.innerHTML = btn.innerHTML.replace("▼", "▲");
+  }
+}
+</script>
+
+</body>
+</html>
 
