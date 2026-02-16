@@ -3,106 +3,331 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>My Quiz</title>
+<title>Myquiz5</title>
 <style>
-:root{
-  --accent:#2ec4b6;
-  --accent-dark:#1da89a;
-  --muted:#69707a;
-  --success:#1f9e5a;
-  --danger:#c82d3f;
-  --warning:#f39c12;
-  --info:#3498db;
-  --purple:#9b59b6;
-  --bg:#f5f7fa;
-  --card:#fff;
-  --maxw:820px;
-  --radius:10px;
+/* Light theme (default) */
+:root {
+  --accent: #2ec4b6;
+  --accent-dark: #1da89a;
+  --muted: #69707a;
+  --success: #1f9e5a;
+  --danger: #c82d3f;
+  --warning: #f39c12;
+  --info: #3498db;
+  --purple: #9b59b6;
+  --bg: #f5f7fa;
+  --card: #fff;
+  --text: #111;
+  --border: #e6eaec;
+  --maxw: 820px;
+  --radius: 10px;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:#111;padding-bottom:96px}
-.container{max-width:var(--maxw);margin:auto;padding:10px 16px}
-header{background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.08);position:relative;z-index:10}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;gap:12px}
-h1{margin:0;color:var(--accent);font-size:18px}
-.btn{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:8px 12px;font-size:13px;font-weight:600;cursor:pointer;transition:background .18s}
-.btn:hover{background:var(--accent-dark)}
-.btn-ghost{background:#fff;color:var(--accent);border:2px solid var(--accent);padding:8px 12px;border-radius:999px;font-weight:700;cursor:pointer}
-.timer-text{color:var(--accent-dark);font-weight:700;font-size:18px;min-width:72px;text-align:right}
-.toggle-pill{position:relative;width:90px;height:30px;background:#eaeef0;border-radius:999px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:0 6px;font-size:13px;color:#444;font-weight:600}
-.toggle-pill span{z-index:2;flex:1;text-align:center}
-.toggle-pill::before{content:"";position:absolute;top:3px;left:3px;width:42px;height:24px;background:var(--accent);border-radius:999px;transition:.28s}
-.toggle-pill.active::before{transform:translateX(45px);background:var(--accent-dark)}
-.toggle-pill.active span:last-child{color:#fff}
-.toggle-pill span:first-child{color:#fff}
+
+/* Dark theme */
+body.dark-mode {
+  --accent: #3dd5c4;
+  --accent-dark: #2ec4b6;
+  --muted: #a0a8b4;
+  --success: #2ecc71;
+  --danger: #e74c3c;
+  --warning: #f1c40f;
+  --info: #5dade2;
+  --purple: #bb8fce;
+  --bg: #1a1e2a;
+  --card: #2d3344;
+  --text: #ecf0f1;
+  --border: #3f4758;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding-bottom: 96px;
+  transition: background 0.2s, color 0.2s;
+}
+.container { max-width: var(--maxw); margin: auto; padding: 10px 16px; }
+header {
+  background: var(--card);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  position: relative;
+  z-index: 10;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+h1 { margin: 0; color: var(--accent); font-size: 18px; }
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.btn:hover { background: var(--accent-dark); }
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.timer-text {
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-size: 18px;
+  min-width: 72px;
+  text-align: right;
+}
+.user-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--accent);
+  background: var(--card);
+  padding: 4px 10px;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+/* Dark mode toggle pill */
+.theme-toggle {
+  position: relative;
+  width: 90px;
+  height: 30px;
+  background: #eaeef0;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  font-size: 13px;
+  color: #444;
+  font-weight: 600;
+}
+.theme-toggle span { z-index: 2; flex: 1; text-align: center; }
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 42px;
+  height: 24px;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: 0.28s;
+}
+.theme-toggle.dark::before { transform: translateX(45px); background: var(--accent-dark); }
+.theme-toggle.dark span:last-child { color: #fff; }
+.theme-toggle span:first-child { color: #fff; }
 
 /* quiz card */
-.card{background:var(--card);border-radius:10px;padding:10px 12px;margin:12px 0;box-shadow:0 4px 10px rgba(0,0,0,0.05)}
-.qbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.qmeta{font-size:13px;color:var(--muted)}
-.marking{font-size:13px;color:var(--muted)}
-.qtext{font-size:16px;margin:6px 0;font-weight:500}
-.opt{padding:10px;border:1px solid #e6eaec;border-radius:8px;background:#fff;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .12s;font-weight:500}
-.opt:hover{border-color:#cfd8da}
-.opt.selected{border-color:var(--accent)}
-.opt.correct{border-color:var(--success);background:rgba(31,158,90,0.12)}
-.opt.wrong{border-color:var(--danger);background:rgba(200,45,63,0.12)}
-.custom-radio{display:none;height:16px;width:16px;border-radius:50%;border:2px solid #ccc}
-.opt.selected .custom-radio{display:block;border:6px solid var(--accent)}
-.opt.correct .custom-radio{display:block;border:6px solid var(--success)}
-.opt.wrong .custom-radio{display:block;border:6px solid var(--danger)}
-.explanation{margin-top:8px;padding:10px;border-radius:8px;background:#fbfdfe;border:1px solid #edf2f3;display:none;font-size:14px}
+.card {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 12px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.qbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.qmeta { font-size: 13px; color: var(--muted); }
+.marking { font-size: 13px; color: var(--muted); }
+.qtext { font-size: 16px; margin: 6px 0; font-weight: 500; }
+.opt {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.12s;
+  font-weight: 500;
+}
+.opt:hover { border-color: var(--accent); }
+.opt.selected { border-color: var(--accent); }
+.opt.correct {
+  border-color: var(--success);
+  background: rgba(31,158,90,0.12);
+}
+.opt.wrong {
+  border-color: var(--danger);
+  background: rgba(200,45,63,0.12);
+}
+.custom-radio {
+  display: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+.opt.selected .custom-radio {
+  display: block;
+  border: 6px solid var(--accent);
+}
+.opt.correct .custom-radio {
+  display: block;
+  border: 6px solid var(--success);
+}
+.opt.wrong .custom-radio {
+  display: block;
+  border: 6px solid var(--danger);
+}
+.explanation {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: none;
+  font-size: 14px;
+}
 
 /* bottom nav */
-.fbar{position:fixed;left:0;right:0;bottom:0;background:#fff;box-shadow:0 -3px 12px rgba(0,0,0,0.08);display:flex;justify-content:center;z-index:50}
-.fbar-inner{display:flex;justify-content:center;align-items:center;gap:10px;max-width:var(--maxw);width:100%;padding:10px}
-.fbar button{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:8px 12px;font-size:13px;font-weight:600;cursor:pointer}
-.fbar button:hover{background:var(--accent-dark)}
+.fbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--card);
+  box-shadow: 0 -3px 12px rgba(0,0,0,0.08);
+  display: flex;
+  justify-content: center;
+  z-index: 50;
+}
+.fbar-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  max-width: var(--maxw);
+  width: 100%;
+  padding: 10px;
+}
+.fbar button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.fbar button:hover { background: var(--accent-dark); }
 
 /* palette popup */
-#palette{position:fixed;top:64px;right:14px;background:#fff;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.12);padding:12px;display:none;gap:8px;flex-wrap:wrap;z-index:200;max-width:300px;max-height:70vh;overflow-y:auto;overscroll-behavior:contain}
-#palette .qbtn{width:44px;height:44px;border-radius:8px;border:1px solid #e3eaeb;background:#fbfdff;cursor:pointer;font-weight:700}
-#palette .qbtn.attempted{background:var(--success);color:#fff;border:none}
-#palette .qbtn.unattempted{background:var(--danger);color:#fff;border:none}
-#palette .qbtn.marked{background:var(--purple);color:#fff;border:none}
-#palette .qbtn.sol-right{background:var(--success);color:#fff;border:none}
-#palette .qbtn.sol-wrong{background:var(--danger);color:#fff;border:none}
-#palette .qbtn.sol-skip{background:#9e9e9e;color:#fff;border:none}
-#palette .qbtn.has-star{position:relative}
-#palette .qbtn.has-star::after{content:"★";position:absolute;bottom:2px;right:2px;font-size:12px;color:gold;text-shadow:0 0 2px #000}
-#palette .qbtn.current{border:3px solid var(--accent);font-weight:bold;transform:scale(1.05);box-shadow:0 0 0 2px rgba(46,196,182,0.2)}
-#palette-summary{margin-top:8px;font-size:13px;color:var(--muted);text-align:center}
+#palette {
+  position: fixed;
+  top: 64px;
+  right: 14px;
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  padding: 12px;
+  display: none;
+  gap: 8px;
+  flex-wrap: wrap;
+  z-index: 200;
+  max-width: 300px;
+  max-height: 70vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+#palette .qbtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text);
+}
+#palette .qbtn.attempted { background: var(--success); color: #fff; border: none; }
+#palette .qbtn.unattempted { background: var(--danger); color: #fff; border: none; }
+#palette .qbtn.marked { background: var(--purple); color: #fff; border: none; }
+#palette .qbtn.current { border: 3px solid var(--accent); font-weight: bold; transform: scale(1.05); box-shadow: 0 0 0 2px rgba(46,196,182,0.2); }
+#palette-summary { margin-top: 8px; font-size: 13px; color: var(--muted); text-align: center; }
 
 /* modal */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:none;align-items:center;justify-content:center;z-index:300}
-.modal-content{background:#fff;border-radius:12px;padding:18px;max-width:420px;width:92%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,0.18)}
-.modal h3{margin:0 0 8px;color:var(--accent)}
-.modal p{color:#333;margin:8px 0 12px;font-size:15px}
-.modal .actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;border:none;padding:8px 14px;border-radius:999px;font-weight:700;cursor:pointer}
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+}
+.modal-content {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px;
+  max-width: 420px;
+  width: 92%;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+.modal h3 { margin: 0 0 8px; color: var(--accent); }
+.modal p { color: var(--text); margin: 8px 0 12px; font-size: 15px; }
+.modal .actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
 
 /* results */
-.results{margin-top:12px}
-.stats{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
-.stat{flex:1 1 120px;padding:10px;border-radius:10px;text-align:center;background:#f7fbfb;border:1px solid #e6eeed}
-.stat h4{margin:0;color:var(--accent);font-size:13px}
-.stat p{margin:6px 0 0;font-weight:700;font-size:18px}
+.results { margin-top: 12px; }
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+.stat {
+  flex: 1 1 120px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+.stat h4 { margin: 0; color: var(--accent); font-size: 13px; }
+.stat p { margin: 6px 0 0; font-weight: 700; font-size: 18px; }
 
-/* New buttons */
-.btn-mark{background:var(--purple);color:#fff}
-.btn-save{background:var(--info);color:#fff}
-.btn-clear{background:var(--warning);color:#fff}
+.btn-mark { background: var(--purple); color: #fff; }
+.btn-save { background: var(--info); color: #fff; }
+.btn-clear { background: var(--warning); color: #fff; }
 
 /* 🔐 COPY & SELECTION BLOCK */
-body{
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-input, textarea{
-  user-select: text !important;
-}
+body { user-select: none; }
+input, textarea { user-select: text !important; }
 
 /* 🔐 WATERMARK (multi‑layer) */
 .watermark-container {
@@ -120,9 +345,10 @@ input, textarea{
   transform: rotate(-30deg);
   white-space: nowrap;
 }
+body.dark-mode .watermark { color: rgba(255,255,255,0.045); }
 
 /* 🔢 MathJax mobile safety */
-mjx-container{
+mjx-container {
   max-width: 100%;
   overflow-x: auto;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
@@ -130,29 +356,29 @@ mjx-container{
 }
 
 /* Responsive design */
-@media (max-width: 768px){
-  .header-inner{ flex-direction: column; gap:8px; padding:8px; }
-  .fbar-inner{ flex-wrap: wrap; padding:8px; gap:6px; }
-  .fbar button{ padding:6px 8px; font-size:12px; flex:1 1 80px; }
-  .container{ padding:8px; }
-  .qtext{ font-size:15px; }
-  .opt{ padding:8px; }
-  #palette{ top:120px; left:50%; transform:translateX(-50%); max-width:90%; }
-  #palette .qbtn{ width:38px; height:38px; }
-  .stats{ flex-direction:column; }
-  .stat{ flex:1 1 auto; }
+@media (max-width: 768px) {
+  .header-inner { flex-direction: column; gap: 8px; padding: 8px; }
+  .fbar-inner { flex-wrap: wrap; padding: 8px; gap: 6px; }
+  .fbar button { padding: 6px 8px; font-size: 12px; flex: 1 1 80px; }
+  .container { padding: 8px; }
+  .qtext { font-size: 15px; }
+  .opt { padding: 8px; }
+  #palette { top: 120px; left: 50%; transform: translateX(-50%); max-width: 90%; }
+  #palette .qbtn { width: 38px; height: 38px; }
+  .stats { flex-direction: column; }
+  .stat { flex: 1 1 auto; }
 }
-@media (max-width: 480px){
-  .timer-text{ font-size:16px; }
-  h1{ font-size:16px; }
-  .btn, .btn-ghost{ padding:6px 10px; font-size:12px; }
-  .fbar-inner{ gap:4px; }
-  .fbar button{ padding:6px; font-size:11px; }
-  .card{ padding:8px; }
+@media (max-width: 480px) {
+  .timer-text { font-size: 16px; }
+  h1 { font-size: 16px; }
+  .btn, .btn-ghost { padding: 6px 10px; font-size: 12px; }
+  .fbar-inner { gap: 4px; }
+  .fbar button { padding: 6px; font-size: 11px; }
+  .card { padding: 8px; }
 }
-@media (min-width: 1024px){
-  .container{ max-width:900px; }
-  .fbar-inner{ max-width:900px; }
+@media (min-width: 1024px) {
+  .container { max-width: 900px; }
+  .fbar-inner { max-width: 900px; }
 }
 
 /* tabs for results */
@@ -179,12 +405,8 @@ mjx-container{
   background: var(--accent);
   color: white;
 }
-.section {
-  display: none;
-}
-.section.active {
-  display: block;
-}
+.section { display: none; }
+.section.active { display: block; }
 .filter-buttons {
   display: flex;
   gap: 8px;
@@ -207,7 +429,7 @@ mjx-container{
   display: flex;
   justify-content: space-between;
   padding: 8px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border);
 }
 </style>
 
@@ -229,7 +451,7 @@ mjx-container{
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <script>
-  // 🔥 Your Firebase configuration (UPDATED)
+  // 🔥 Your Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyAQk0dJayCyv8gfDGsYW-XSYC5n13oWvpA",
     authDomain: "ssc-journey.firebaseapp.com",
@@ -245,11 +467,11 @@ mjx-container{
   const db = firebase.database();
 
   // ---------- CONFIGURATION ----------
-  const LOGIN_PAGE_URL = "login.html";
+  const LOGIN_PAGE_URL = "https://no-fluke.github.io/website-finial/login.html";
   // -----------------------------------
 
   // Quiz data from Python
-  const QUIZ_TITLE = "My Quiz";
+  const QUIZ_TITLE = "Myquiz5";
   const QUESTIONS = [{"answer": "2", "correct_score": "3", "negative_score": "1", "option_1": "(a) Only Statement II is correct", "option_2": "(b) Both Statements I and II are correct", "option_3": "(c) Only Statement I is correct", "option_4": "(d) Neither Statement I nor II is correct", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Read the following statements regarding the ‘Doctrine of Repugnancy’ (Article 254):<br>Statement I: If a ‘State law’ on a “Concurrent List” subject conflict with a ‘Union law’, then the Union law prevails, and the State law becomes ‘void’ to the extent of the repugnancy.<br>Statement II: A State law on a Concurrent subject that conflicts with a Union law can still prevail within that State if it has been reserved for and received the assent of the President.<br>Which of the above statements is/are correct?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "4", "correct_score": "3", "negative_score": "1", "option_1": "(a) Maximizing the role of the private sector in the 'commanding heights' of the economy.", "option_2": "(b) Achieving immediate self-sufficiency in food grain production through the Green Revolution.", "option_3": "(c) Establishing an export-oriented economy to integrate rapidly with global trade markets.", "option_4": "(d) Rapid industrialization with a particular emphasis on the development of basic and heavy industries.", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "The Second Five Year Plan (1956-1961), often associated with the Mahalanobis Model, marked a significant shift in India's development strategy. What was the primary focus of this plan?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "3", "correct_score": "3", "negative_score": "1", "option_1": "(a) The BRICS Space Agency", "option_2": "(b) A common BRICS currency called 'R5'", "option_3": "(c) The Contingent Reserve Arrangement (CRA)", "option_4": "(d) A permanent BRICS Secretariat in Brazil", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "The 'Fortaleza Declaration' of 2014 is most famous in BRICS history for the creation of which of the following?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "3", "correct_score": "3", "negative_score": "1", "option_1": "(a) To expand treasury revenue by encouraging unrestricted trade with neighboring regions.", "option_2": "(b) To replace religious taxation with a uniform system of commercial levies across markets.", "option_3": "(c) To keep essential commodity prices low so soldiers could be maintained on fixed salaries.", "option_4": "(d) To promote overseas trade by encouraging Indian textile exports to foreign empires.", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Which of the following was a primary objective of Alauddin Khilji's 'Market Control' (Zawabit) regulations?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "3", "correct_score": "3", "negative_score": "1", "option_1": "(a) Revenue deficit", "option_2": "(b) Fiscal deficit", "option_3": "(c) Primary deficit", "option_4": "(d) Budget deficit", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "From a macroeconomic perspective, which indicator best captures the government's borrowing requirement excluding interest payments on past debt?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "4", "correct_score": "3", "negative_score": "1", "option_1": "(a) Accumulation of Ethyl Alcohol", "option_2": "(b) Excessive release of Carbon Dioxide", "option_3": "(c) Depletion of Vitamin C", "option_4": "(d) Accumulation of Lactic Acid", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Which of the following biological processes explains why human muscles often feel sore or ‘cramped’ after a sudden, intense bout of physical exercise?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "3", "correct_score": "3", "negative_score": "1", "option_1": "(a) Both Statement I and II are correct", "option_2": "(b) Neither Statement I nor II is correct", "option_3": "(c) Only Statement I is correct", "option_4": "(d) Only Statement II is correct", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Read the below statements:<br>Statement I) The 'Zoji La pass' serves as a very important link between the Kashmir Valley and the Ladakh region, cutting through the Great Himalayan Range.<br>Statement II) The 'Shipki La pass' is located in Arunachal Pradesh and serves as a primary gateway for the river Brahmaputra to enter India from Tibet.<br>Which of the above statements is/are correct?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "1", "correct_score": "3", "negative_score": "1", "option_1": "(a) Both Statement 1 and Statement 2", "option_2": "(b) Only Statement 2", "option_3": "(c) Only Statement 1", "option_4": "(d) Neither Statement 1 nor Statement 2", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Regarding the legal protection of Dugong (Sea Cow) in India, consider the following statements<br>1 The Dugong is protected under Schedule I of the Wildlife (Protection) Act, 197<br>2 This classification provides the Dugong with the highest level of legal protection, similar to that of the Tiger<br>Which of the statements given above is/are correct?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "1", "correct_score": "3", "negative_score": "1", "option_1": "(a) Four 10-minute quarters", "option_2": "(b) Four 12-minute quarters", "option_3": "(c) Two 20-minute halves", "option_4": "(d) Four 8-minute quarters", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "In a standard FIBA (International) game, how many quarters are played, and how long is each quarter?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "4", "correct_score": "3", "negative_score": "1", "option_1": "(a) ISRO-only mission for X-band radar mapping", "option_2": "(b) NASA-only mission for ultraviolet astronomy", "option_3": "(c) Optical imaging mission for exoplanet detection", "option_4": "(d) Joint ISRO-NASA mission using L and S-band radar", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Which of the following correctly describes the NISAR mission?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "4", "correct_score": "3", "negative_score": "1", "option_1": "(a) Neither statement I nor II is correct", "option_2": "(b) Only statement I is correct", "option_3": "(c) Only statement II is correct", "option_4": "(d) Both statements I and II are correct", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Read the below statements regarding Aman Sehrawat's performance at the Paris 2024 Olympics:<br>Statement I: Aman Sehrawat won the bronze medal in the Men's 57kg freestyle wrestling event by defeating Darian Cruz of Puerto Rico.<br>Statement II: With this win, at the age of 21 years and 24 days, he surpassed PV Sindhu to become India's youngest-ever individual Olympic medalist.<br>Which of the following is correct?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "4", "correct_score": "3", "negative_score": "1", "option_1": "(a) Promoting Indian languages globally", "option_2": "(b) Developing new libraries across India", "option_3": "(c) Translating classical texts into modern languages", "option_4": "(d) Preserving, digitizing, and disseminating India's manuscript heritage", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "What constitutes the primary objective of the Gyan Bharatam Mission?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "2", "correct_score": "3", "negative_score": "1", "option_1": "(a) Adult literacy rate and primary school enrollment", "option_2": "(b) Mean years of schooling and Expected years of schooling", "option_3": "(c) Student-to-teacher ratio in secondary education", "option_4": "(d) Number of universities and research publications", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Which indicator is used to measure the 'Knowledge' dimension of the Human Development Index?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "1", "correct_score": "3", "negative_score": "1", "option_1": "(a) The ruler was free to employ any European (French, Portuguese, etc.) as long as they were not in active conflict with the British.", "option_2": "(b) If the ruler failed to make payments for the maintenance of the British force, a portion of his territory was ceded as a penalty.", "option_3": "(c) The Indian ruler was required to disband his own military and maintain a permanent British contingent within his territory.", "option_4": "(d) The British promised not to interfere in the internal administrative affairs of the allied state.", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Regarding the 'Subsidiary Alliance' system introduced by Lord Wellesley (1798-1805), which of the following statements is INCORRECT?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "1", "correct_score": "3", "negative_score": "1", "option_1": "(a) Both Statements 1 and 2 are correct", "option_2": "(b) Only statement 1 is correct", "option_3": "(c) Neither Statement 1 nor 2 is correct", "option_4": "(d) Only statement 2 is correct", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Consider the following statements regarding the current Vice President of India<br>Statement 1: Chandrapuram Ponnusami (C.P.) Radhakrishnan is the Vice President of India, took charge on 12th September 2025<br>Statement 2: Unlike the Presidential election, the electoral college for the Vice President includes nominated members of both Houses of Parliament<br>Which of the statements above is/are correct?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "4", "correct_score": "3", "negative_score": "1", "option_1": "(a) Strengthening the MRTP Act to restrict the expansion of large business houses.", "option_2": "(b) Expanding the list of industries reserved exclusively for the public sector.", "option_3": "(c) Increasing the peak customs duty on imports to protect domestic industries.", "option_4": "(d) Abolishing industrial licensing for most industries to encourage private entry.", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Which of the following was a primary objective of 'Liberalization' within the New Economic Policy (NEP) of 1991?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "1", "correct_score": "3", "negative_score": "1", "option_1": "(a) Bauxite - Odisha", "option_2": "(b) Copper - Uttar Pradesh", "option_3": "(c) Mica - Rajasthan", "option_4": "(d) Limestone - Jharkhand", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Which of the following pairs of minerals and its leading producing state in India is correctly matched?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "1", "correct_score": "3", "negative_score": "1", "option_1": "(a) Percival Everett", "option_2": "(b) Colson Whitehead", "option_3": "(c) Paul Lynch", "option_4": "(d) Hernan Diaz", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Who was awarded the 2025 Pulitzer Prize for Fiction for a novel that serves as a provocative and satirical reimagining of the life of Jim from Mark Twain's 'Adventures of Huckleberry Finn'?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "2", "correct_score": "3", "negative_score": "1", "option_1": "(a) Decline of indigenous art", "option_2": "(b) Continuous interaction of religion and regional styles", "option_3": "(c) Sudden cultural change", "option_4": "(d) Foreign architectural dominance", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Which historical process is best reflected by the evolution of temple architecture in India?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "3", "correct_score": "3", "negative_score": "1", "option_1": "(a) Bhubaneswar, Odisha, from November 15 to November 30, 2025", "option_2": "(b) Lucknow, Uttar Pradesh, from December 1 to December 15, 2025", "option_3": "(c) Chennai and Madurai, Tamil Nadu, from November 28 to December 10, 2025", "option_4": "(d) New Delhi, at Major Dhyan Chand National Stadium, from December 20 to December 31, 2025", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "India hosted the 2025 Men's FIH Hockey Junior World Cup. Which of the following correctly states the location, host city name, and timing of this event?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "3", "correct_score": "3", "negative_score": "1", "option_1": "(a) Only statement 2", "option_2": "(b) Neither statement 1 nor 2", "option_3": "(c) Statement 1 and 2 both", "option_4": "(d) Only statement 1", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Read the below statements:<br>1  NASA launched a space telescope, SPHEREx, to study the universe’s “cosmic glow”.<br>2  The Major Atmospheric Cherenkov Experiment (MACE) telescope was inaugurated at Hanle, Ladakh.<br>Which of the above statements is/are correct?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "4", "correct_score": "3", "negative_score": "1", "option_1": "(a) It is a lunar-based festival celebrated exclusively by the Buddhist community in the Himalayan belt.", "option_2": "(b) It marks the start of the harvest season in Southern India and is dedicated to the Sun God.", "option_3": "(c) It is a monsoon festival commemorating the victory of Good over Evil in the Mughal courts.", "option_4": "(d) It is the Persian New Year celebrated on the Spring Equinox, introduced in India by Ghiyasuddin Balban.", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Which of the following statements regarding 'Navroz' (Nowruz) is correct?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "1", "correct_score": "3", "negative_score": "1", "option_1": "(a) Imprisonment up to 10 years and a fine", "option_2": "(b) Life imprisonment", "option_3": "(c) Imprisonment up to 7 years and a fine", "option_4": "(d) Imprisonment up to 5 years and a fine", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Regarding 'Hit and Run' cases under Section 106(2) of the Bharatiya Nyaya Sanhita, 2023 (BNS), what is the maximum punishment if an offender causes death by rash and negligent driving and fails to inform a 'police officer' or 'Magistrate'?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}, {"answer": "1", "correct_score": "3", "negative_score": "1", "option_1": "(a) Bard of Brahmaputra", "option_2": "(b) Son of Brahmaputra", "option_3": "(c) Kala Guru of Assam", "option_4": "(d) Voice of Brahmaputra", "option_5": "", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question": "Dr. Bhupen Hazarika is famously known by which of the following titles, reflecting his deep connection to the geography and spirit of Assam?", "question_image": "", "section": "", "solution_image": "", "solution_text": ""}];
   const TOTAL_TIME_SECONDS = 1500;
 
@@ -260,13 +482,32 @@ mjx-container{
   let markedForReview = new Set();
   let seconds = TOTAL_TIME_SECONDS;
   let timerInterval = null;
-  let isQuiz = false;          // false = Test mode (solution), true = Quiz mode
-  let LAST_RESULT_HTML = "";
+  // Always in quiz mode
+  const isQuiz = true;
 
   const QUIZ_STATE_KEY = "ssc_quiz_state_" + QUIZ_TITLE;
   const QUIZ_RESULT_KEY = "ssc_quiz_result_" + QUIZ_TITLE;
 
   const el = id => document.getElementById(id);
+
+  // Dark mode handling
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      el('themeToggle').classList.add('dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      el('themeToggle').classList.remove('dark');
+    }
+  }
+
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    el('themeToggle').classList.toggle('dark', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
 
   function showQuizImmediately() {
     el('loadingMessage').style.display = 'none';
@@ -286,6 +527,8 @@ mjx-container{
 
   // ---------- AUTH ----------
   window.addEventListener('DOMContentLoaded', () => {
+    initTheme(); // set theme from localStorage
+
     auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(console.error);
     let authResolved = false;
     const authTimeout = setTimeout(() => {
@@ -302,6 +545,7 @@ mjx-container{
     if (cachedUid && cachedTime && (now - cachedTime < CACHE_VALIDITY)) {
       currentUser = { uid: cachedUid, email: cachedEmail, displayName: cachedName || cachedEmail };
       showQuizImmediately();
+      updateUserName();
     }
 
     auth.onAuthStateChanged(user => {
@@ -313,7 +557,12 @@ mjx-container{
         localStorage.setItem('quiz_user_email', user.email);
         localStorage.setItem('quiz_user_displayName', user.displayName || '');
         localStorage.setItem('quiz_login_time', Date.now());
-        if (!window.quizInitialized) showQuizImmediately();
+        if (!window.quizInitialized) {
+          showQuizImmediately();
+          updateUserName();
+        } else {
+          updateUserName();
+        }
       } else {
         localStorage.removeItem('quiz_user_uid');
         localStorage.removeItem('quiz_user_email');
@@ -329,6 +578,13 @@ mjx-container{
       setTimeout(redirectToLogin, 2000);
     });
   });
+
+  function updateUserName() {
+    const nameSpan = el('userNameDisplay');
+    if (nameSpan && currentUser) {
+      nameSpan.textContent = currentUser.displayName || currentUser.email || 'User';
+    }
+  }
 
   // ---------- QUIZ FUNCTIONS ----------
   function initQuiz() {
@@ -388,30 +644,15 @@ mjx-container{
       div.className = "opt";
       div.innerHTML = `<div class="custom-radio"></div><div style="flex:1">${q[k]}</div>`;
 
-      // In Quiz mode: show selected only, no correct/wrong yet
-      if (isQuiz) {
-        if (userAns === String(idx+1)) div.classList.add("selected");
-        div.addEventListener("click", () => selectOption(q, idx+1, div));
-      } else {
-        // Solution mode: show correct answer and user's wrong answer (if any)
-        const isCorrect = String(q.answer) === String(idx+1);
-        const isUserWrong = (userAns && userAns === String(idx+1) && !isCorrect);
-        if (isCorrect) div.classList.add("correct");
-        else if (isUserWrong) div.classList.add("wrong");
-        // No click handler in solution mode
-      }
+      // Quiz mode: show selected only, no correct/wrong yet
+      if (userAns === String(idx+1)) div.classList.add("selected");
+      div.addEventListener("click", () => selectOption(q, idx+1, div));
+
       opts.appendChild(div);
     });
 
-    // Show explanation in solution mode
-    if (!isQuiz && q.solution_text) {
-      el("explanation").innerHTML = `<strong>Explanation:</strong> ${q.solution_text}`;
-      el("explanation").style.display = "block";
-      normalizeMathForQuiz(el("explanation"));
-      renderMath();
-    } else {
-      el("explanation").style.display = "none";
-    }
+    // No explanation until after submit
+    el("explanation").style.display = "none";
 
     highlightPalette();
     saveQuizState();
@@ -422,20 +663,8 @@ mjx-container{
     answers[qid] = String(val);
     Array.from(el("options").children).forEach(o => o.classList.remove("selected"));
     div.classList.add("selected");
-    // In quiz mode, we may show immediate feedback if desired; here we don't auto-show correct/wrong.
-    // If you want instant feedback, uncomment showFeedback.
-    // showFeedback(q, val);
     highlightPalette();
     saveQuizState();
-  }
-
-  function showFeedback(q, val) {
-    Array.from(el("options").children).forEach((o, idx) => {
-      o.classList.remove("correct","wrong");
-      const idx1 = idx+1;
-      if(String(q.answer) === String(idx1)) o.classList.add("correct");
-      else if(String(val) === String(idx1)) o.classList.add("wrong");
-    });
   }
 
   function startTimer() {
@@ -648,7 +877,7 @@ mjx-container{
         const idx = j+1;
         const isOptCorrect = String(idx) === String(q.answer);
         const isUser = ans && String(idx) === String(ans);
-        let style = "border:1px solid #eee; background:#fafbfd;";
+        let style = "border:1px solid var(--border); background:var(--card);";
         if(isOptCorrect) style = "border:2px solid var(--success); background:rgba(31,158,90,0.12);";
         else if(isUser && !isOptCorrect) style = "border:2px solid var(--danger); background:rgba(200,45,63,0.12);";
         reviewHTML += `<div style="padding:8px; margin:6px 0; border-radius:8px; ${style}">${q[key]}</div>`;
@@ -662,37 +891,37 @@ mjx-container{
     // ----- Summary tab HTML (stats + rank/percentile + refresh button) -----
     const summaryHTML = `
       <div class="stats-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; padding:16px;">
-        <div class="stat-card" style="background:#f0f4f8; border-radius:12px; padding:16px; text-align:center;">
+        <div class="stat-card" style="background:var(--bg); border-radius:12px; padding:16px; text-align:center;">
           <div style="font-size:28px; font-weight:700; color:var(--accent);">${payload.score}</div>
-          <div style="color:#555;">Total Score</div>
+          <div style="color:var(--muted);">Total Score</div>
         </div>
-        <div class="stat-card" style="background:#f0f4f8; border-radius:12px; padding:16px; text-align:center;">
+        <div class="stat-card" style="background:var(--bg); border-radius:12px; padding:16px; text-align:center;">
           <div style="font-size:28px; font-weight:700; color:var(--success);">${payload.correct}</div>
-          <div style="color:#555;">Correct</div>
+          <div style="color:var(--muted);">Correct</div>
         </div>
-        <div class="stat-card" style="background:#f0f4f8; border-radius:12px; padding:16px; text-align:center;">
+        <div class="stat-card" style="background:var(--bg); border-radius:12px; padding:16px; text-align:center;">
           <div style="font-size:28px; font-weight:700; color:var(--danger);">${payload.wrong}</div>
-          <div style="color:#555;">Wrong</div>
+          <div style="color:var(--muted);">Wrong</div>
         </div>
-        <div class="stat-card" style="background:#f0f4f8; border-radius:12px; padding:16px; text-align:center;">
-          <div style="font-size:28px; font-weight:700; color:#888;">${payload.unattempted}</div>
-          <div style="color:#555;">Unattempted</div>
+        <div class="stat-card" style="background:var(--bg); border-radius:12px; padding:16px; text-align:center;">
+          <div style="font-size:28px; font-weight:700; color:var(--muted);">${payload.unattempted}</div>
+          <div style="color:var(--muted);">Unattempted</div>
         </div>
-        <div class="stat-card" style="background:#f0f4f8; border-radius:12px; padding:16px; text-align:center;">
+        <div class="stat-card" style="background:var(--bg); border-radius:12px; padding:16px; text-align:center;">
           <div style="font-size:28px; font-weight:700; color:var(--purple);">${payload.accuracy}%</div>
-          <div style="color:#555;">Accuracy</div>
+          <div style="color:var(--muted);">Accuracy</div>
         </div>
-        <div class="stat-card" style="background:#f0f4f8; border-radius:12px; padding:16px; text-align:center;">
+        <div class="stat-card" style="background:var(--bg); border-radius:12px; padding:16px; text-align:center;">
           <div style="font-size:28px; font-weight:700; color:var(--info);">${fmt(payload.timeTaken)}</div>
-          <div style="color:#555;">Time Taken</div>
+          <div style="color:var(--muted);">Time Taken</div>
         </div>
-        <div class="stat-card" style="background:#f0f4f8; border-radius:12px; padding:16px; text-align:center;" id="rankCard">
+        <div class="stat-card" style="background:var(--bg); border-radius:12px; padding:16px; text-align:center;" id="rankCard">
           <div style="font-size:28px; font-weight:700; color:var(--accent-dark);" id="rankValue">?</div>
-          <div style="color:#555;">Rank</div>
+          <div style="color:var(--muted);">Rank</div>
         </div>
-        <div class="stat-card" style="background:#f0f4f8; border-radius:12px; padding:16px; text-align:center;" id="percentileCard">
+        <div class="stat-card" style="background:var(--bg); border-radius:12px; padding:16px; text-align:center;" id="percentileCard">
           <div style="font-size:28px; font-weight:700; color:var(--accent-dark);" id="percentileValue">?</div>
-          <div style="color:#555;">Percentile</div>
+          <div style="color:var(--muted);">Percentile</div>
         </div>
       </div>
       <div style="text-align:center; margin-top:16px;">
@@ -745,18 +974,17 @@ mjx-container{
         const tabName = e.target.dataset.tab;
         document.getElementById(`section-${tabName}`).classList.add('active');
         if (tabName === 'leaderboard') {
-          loadLeaderboard();
+          loadLeaderboard(); // leaderboard already uses quiz_results
         } else if (tabName === 'history') {
-          loadAttemptHistory();
+          loadAttemptHistory(); // history still uses attempt_history
         }
       });
     });
 
-    // Compute rank and percentile initially (based on all attempts)
-    db.ref(`attempt_history/${QUIZ_TITLE}`).once("value").then(snap => {
+    // Compute rank and percentile based on FIRST ATTEMPTS (quiz_results)
+    db.ref(`quiz_results/${QUIZ_TITLE}`).once("value").then(snap => {
       const data = snap.val() || {};
-      let attempts = [];
-      Object.values(data).forEach(u => Object.values(u).forEach(a => attempts.push(a)));
+      const attempts = Object.values(data);
       attempts.sort((a,b) => b.score - a.score || a.timeTaken - b.timeTaken);
       let rank = 1;
       for (let i=0; i<attempts.length; i++) {
@@ -765,7 +993,7 @@ mjx-container{
           break;
         }
       }
-      const percentile = ((attempts.length - rank) / attempts.length * 100).toFixed(1);
+      const percentile = attempts.length ? ((attempts.length - rank) / attempts.length * 100).toFixed(1) : "0.0";
       document.getElementById('rankValue').textContent = rank + '/' + attempts.length;
       document.getElementById('percentileValue').textContent = percentile + '%';
     });
@@ -778,26 +1006,29 @@ mjx-container{
     if (!rankSpan || !percentileSpan) return;
     rankSpan.textContent = '...';
     percentileSpan.textContent = '...';
-    db.ref(`attempt_history/${QUIZ_TITLE}`).once("value").then(snap => {
+
+    // Use quiz_results (first attempts) only
+    db.ref(`quiz_results/${QUIZ_TITLE}`).once("value").then(snap => {
       const data = snap.val() || {};
-      let attempts = [];
-      Object.values(data).forEach(u => Object.values(u).forEach(a => attempts.push(a)));
+      const attempts = Object.values(data);
       attempts.sort((a,b) => b.score - a.score || a.timeTaken - b.timeTaken);
-      const userAttempts = attempts.filter(a => a.userId === currentUser.uid);
-      if (userAttempts.length === 0) {
+
+      // Find the current user's first attempt (the one saved in quiz_results)
+      const userFirstAttempt = attempts.find(a => a.userId === currentUser.uid);
+      if (!userFirstAttempt) {
         rankSpan.textContent = 'N/A';
         percentileSpan.textContent = 'N/A';
         return;
       }
-      const latest = userAttempts.sort((a,b) => b.submittedAt - a.submittedAt)[0];
+
       let rank = 1;
       for (let i=0; i<attempts.length; i++) {
-        if (attempts[i].userId === latest.userId && attempts[i].submittedAt === latest.submittedAt) {
+        if (attempts[i].userId === userFirstAttempt.userId && attempts[i].submittedAt === userFirstAttempt.submittedAt) {
           rank = i+1;
           break;
         }
       }
-      const percentile = ((attempts.length - rank) / attempts.length * 100).toFixed(1);
+      const percentile = attempts.length ? ((attempts.length - rank) / attempts.length * 100).toFixed(1) : "0.0";
       rankSpan.textContent = rank + '/' + attempts.length;
       percentileSpan.textContent = percentile + '%';
     }).catch(console.error);
@@ -841,12 +1072,9 @@ mjx-container{
       el("submitModal").style.display = "none";
       submitQuiz();
     });
-    el("modeToggle").addEventListener("click", () => {
-      el("modeToggle").classList.toggle("active");
-      isQuiz = el("modeToggle").classList.contains("active");
-      renderQuestion(current);
-      highlightPalette();
-    });
+    // Theme toggle
+    el("themeToggle").addEventListener("click", toggleTheme);
+
     document.addEventListener("click", (ev) => {
       const pal = el("palette");
       if(pal && pal.style.display === "flex" && !pal.contains(ev.target) && ev.target !== el("paletteBtn") && !el("paletteBtn").contains(ev.target)) {
@@ -882,52 +1110,26 @@ mjx-container{
     const total = QUESTIONS.length;
     Array.from(pal.children).forEach((child, idx) => {
       if(child.id === "palette-summary") return;
-      child.classList.remove("attempted","unattempted","marked","current","sol-right","sol-wrong","sol-skip","has-star");
+      child.classList.remove("attempted","unattempted","marked","current");
       const qid = QUESTIONS[idx].id ?? idx;
       const userAns = answers[qid];
       const isMarked = markedForReview.has(idx);
-      const correctAns = String(QUESTIONS[idx].answer);
 
       if (idx === current) child.classList.add("current");
-
-      if (!isQuiz) {
-        // SOLUTION MODE
-        if (!userAns) {
-          child.classList.add("sol-skip");
-        } else if (userAns === correctAns) {
-          child.classList.add("sol-right");
-        } else {
-          child.classList.add("sol-wrong");
-        }
-        if (isMarked) child.classList.add("has-star");
+      if (isMarked) {
+        child.classList.add("marked");
+      } else if (userAns) {
+        child.classList.add("attempted");
       } else {
-        // QUIZ MODE
-        if (isMarked) {
-          child.classList.add("marked");
-        } else if (userAns) {
-          child.classList.add("attempted");
-        } else {
-          child.classList.add("unattempted");
-        }
+        child.classList.add("unattempted");
       }
     });
     const summary = el("palette-summary");
     if (summary) {
-      if (!isQuiz) {
-        let right = 0, wrong = 0, skip = 0;
-        QUESTIONS.forEach((q, i) => {
-          const ua = answers[q.id ?? i];
-          if (!ua) skip++;
-          else if (String(ua) === String(q.answer)) right++;
-          else wrong++;
-        });
-        summary.innerHTML = `✅ ${right}  ❌ ${wrong}  ⏭️ ${skip}`;
-      } else {
-        const attempted = Object.keys(answers).length;
-        const marked = markedForReview.size;
-        const notAttempted = total - attempted - marked;
-        summary.innerHTML = `Total: ${total} | <span style="color:var(--success)">Attempted: ${attempted}</span> | <span style="color:var(--danger)">Unattempted: ${notAttempted}</span> | <span style="color:var(--purple)">Marked: ${marked}</span>`;
-      }
+      const attempted = Object.keys(answers).length;
+      const marked = markedForReview.size;
+      const notAttempted = total - attempted - marked;
+      summary.innerHTML = `Total: ${total} | <span style="color:var(--success)">Attempted: ${attempted}</span> | <span style="color:var(--danger)">Unattempted: ${notAttempted}</span> | <span style="color:var(--purple)">Marked: ${marked}</span>`;
     }
   }
 
@@ -960,9 +1162,14 @@ mjx-container{
 <header id="quizHeader" style="display:none;">
   <div class="header-inner" id="headerControls">
     <div style="display:flex; align-items:center; gap:12px">
-      <div class="toggle-pill" id="modeToggle"><span>Test</span><span>Quiz</span></div>
+      <!-- Dark/Light Toggle Pill -->
+      <div class="theme-toggle" id="themeToggle">
+        <span>Light</span>
+        <span>Dark</span>
+      </div>
     </div>
     <div style="display:flex; align-items:center; gap:10px">
+      <span class="user-name" id="userNameDisplay"></span>
       <div class="timer-text" id="timer">00:00</div>
       <button id="submitBtn" class="btn">Submit</button>
       <button id="paletteBtn" class="btn-ghost">View</button>
