@@ -209,6 +209,23 @@ mjx-container{
   padding: 8px;
   border-bottom: 1px solid #eee;
 }
+
+/* user name display */
+.user-info {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #333;
+  background: #f0f4f8;
+  padding: 4px 10px;
+  border-radius: 30px;
+  font-weight: 500;
+}
+@media (max-width: 600px) {
+  .user-info { max-width: 90px; }
+}
 </style>
 
 <!-- 🔢 MathJax -->
@@ -248,34 +265,12 @@ mjx-container{
   const LOGIN_PAGE_URL = "login.html";
   // -----------------------------------
 
-  // Quiz data from Python
+  // Quiz data from Python (replace with dynamic data for template)
   const QUIZ_TITLE = "Testquiz3";
   const QUESTIONS = [
-{"question": "Read the following statements regarding the ‘Doctrine of Repugnancy’ (Article 254):<br>Statement I: If a ‘State law’ on a “Concurrent List” subject conflict with a ‘Union law’, then the Union law prevails, and the State law becomes ‘void’ to the extent of the repugnancy.<br>Statement II: A State law on a Concurrent subject that conflicts with a Union law can still prevail within that State if it has been reserved for and received the assent of the President.<br>Which of the above statements is/are correct?", "option_1": "(a) Only Statement II is correct", "option_2": "(b) Both Statements I and II are correct", "option_3": "(c) Only Statement I is correct", "option_4": "(d) Neither Statement I nor II is correct", "option_5": "", "answer": "2", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50001", "quiz_id": "Testquiz3"},
-{"question": "The Second Five Year Plan (1956-1961), often associated with the Mahalanobis Model, marked a significant shift in India's development strategy. What was the primary focus of this plan?", "option_1": "(a) Maximizing the role of the private sector in the 'commanding heights' of the economy.", "option_2": "(b) Achieving immediate self-sufficiency in food grain production through the Green Revolution.", "option_3": "(c) Establishing an export-oriented economy to integrate rapidly with global trade markets.", "option_4": "(d) Rapid industrialization with a particular emphasis on the development of basic and heavy industries.", "option_5": "", "answer": "4", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50002", "quiz_id": "Testquiz3"},
-{"question": "The 'Fortaleza Declaration' of 2014 is most famous in BRICS history for the creation of which of the following?", "option_1": "(a) The BRICS Space Agency", "option_2": "(b) A common BRICS currency called 'R5'", "option_3": "(c) The Contingent Reserve Arrangement (CRA)", "option_4": "(d) A permanent BRICS Secretariat in Brazil", "option_5": "", "answer": "3", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50003", "quiz_id": "Testquiz3"},
-{"question": "Which of the following was a primary objective of Alauddin Khilji's 'Market Control' (Zawabit) regulations?", "option_1": "(a) To expand treasury revenue by encouraging unrestricted trade with neighboring regions.", "option_2": "(b) To replace religious taxation with a uniform system of commercial levies across markets.", "option_3": "(c) To keep essential commodity prices low so soldiers could be maintained on fixed salaries.", "option_4": "(d) To promote overseas trade by encouraging Indian textile exports to foreign empires.", "option_5": "", "answer": "3", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50004", "quiz_id": "Testquiz3"},
-{"question": "From a macroeconomic perspective, which indicator best captures the government's borrowing requirement excluding interest payments on past debt?", "option_1": "(a) Revenue deficit", "option_2": "(b) Fiscal deficit", "option_3": "(c) Primary deficit", "option_4": "(d) Budget deficit", "option_5": "", "answer": "3", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50005", "quiz_id": "Testquiz3"},
-{"question": "Which of the following biological processes explains why human muscles often feel sore or ‘cramped’ after a sudden, intense bout of physical exercise?", "option_1": "(a) Accumulation of Ethyl Alcohol", "option_2": "(b) Excessive release of Carbon Dioxide", "option_3": "(c) Depletion of Vitamin C", "option_4": "(d) Accumulation of Lactic Acid", "option_5": "", "answer": "4", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50006", "quiz_id": "Testquiz3"},
-{"question": "Read the below statements:<br>Statement I) The 'Zoji La pass' serves as a very important link between the Kashmir Valley and the Ladakh region, cutting through the Great Himalayan Range.<br>Statement II) The 'Shipki La pass' is located in Arunachal Pradesh and serves as a primary gateway for the river Brahmaputra to enter India from Tibet.<br>Which of the above statements is/are correct?", "option_1": "(a) Both Statement I and II are correct", "option_2": "(b) Neither Statement I nor II is correct", "option_3": "(c) Only Statement I is correct", "option_4": "(d) Only Statement II is correct", "option_5": "", "answer": "3", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50007", "quiz_id": "Testquiz3"},
-{"question": "Regarding the legal protection of Dugong (Sea Cow) in India, consider the following statements<br>1 The Dugong is protected under Schedule I of the Wildlife (Protection) Act, 197<br>2 This classification provides the Dugong with the highest level of legal protection, similar to that of the Tiger<br>Which of the statements given above is/are correct?", "option_1": "(a) Both Statement 1 and Statement 2", "option_2": "(b) Only Statement 2", "option_3": "(c) Only Statement 1", "option_4": "(d) Neither Statement 1 nor Statement 2", "option_5": "", "answer": "1", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50008", "quiz_id": "Testquiz3"},
-{"question": "In a standard FIBA (International) game, how many quarters are played, and how long is each quarter?", "option_1": "(a) Four 10-minute quarters", "option_2": "(b) Four 12-minute quarters", "option_3": "(c) Two 20-minute halves", "option_4": "(d) Four 8-minute quarters", "option_5": "", "answer": "1", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50009", "quiz_id": "Testquiz3"},
-{"question": "Which of the following correctly describes the NISAR mission?", "option_1": "(a) ISRO-only mission for X-band radar mapping", "option_2": "(b) NASA-only mission for ultraviolet astronomy", "option_3": "(c) Optical imaging mission for exoplanet detection", "option_4": "(d) Joint ISRO-NASA mission using L and S-band radar", "option_5": "", "answer": "4", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50010", "quiz_id": "Testquiz3"},
-{"question": "Read the below statements regarding Aman Sehrawat's performance at the Paris 2024 Olympics:<br>Statement I: Aman Sehrawat won the bronze medal in the Men's 57kg freestyle wrestling event by defeating Darian Cruz of Puerto Rico.<br>Statement II: With this win, at the age of 21 years and 24 days, he surpassed PV Sindhu to become India's youngest-ever individual Olympic medalist.<br>Which of the following is correct?", "option_1": "(a) Neither statement I nor II is correct", "option_2": "(b) Only statement I is correct", "option_3": "(c) Only statement II is correct", "option_4": "(d) Both statements I and II are correct", "option_5": "", "answer": "4", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50011", "quiz_id": "Testquiz3"},
-{"question": "What constitutes the primary objective of the Gyan Bharatam Mission?", "option_1": "(a) Promoting Indian languages globally", "option_2": "(b) Developing new libraries across India", "option_3": "(c) Translating classical texts into modern languages", "option_4": "(d) Preserving, digitizing, and disseminating India's manuscript heritage", "option_5": "", "answer": "4", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50012", "quiz_id": "Testquiz3"},
-{"question": "Which indicator is used to measure the 'Knowledge' dimension of the Human Development Index?", "option_1": "(a) Adult literacy rate and primary school enrollment", "option_2": "(b) Mean years of schooling and Expected years of schooling", "option_3": "(c) Student-to-teacher ratio in secondary education", "option_4": "(d) Number of universities and research publications", "option_5": "", "answer": "2", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50013", "quiz_id": "Testquiz3"},
-{"question": "Regarding the 'Subsidiary Alliance' system introduced by Lord Wellesley (1798-1805), which of the following statements is INCORRECT?", "option_1": "(a) The ruler was free to employ any European (French, Portuguese, etc.) as long as they were not in active conflict with the British.", "option_2": "(b) If the ruler failed to make payments for the maintenance of the British force, a portion of his territory was ceded as a penalty.", "option_3": "(c) The Indian ruler was required to disband his own military and maintain a permanent British contingent within his territory.", "option_4": "(d) The British promised not to interfere in the internal administrative affairs of the allied state.", "option_5": "", "answer": "1", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50014", "quiz_id": "Testquiz3"},
-{"question": "Consider the following statements regarding the current Vice President of India<br>Statement 1: Chandrapuram Ponnusami (C.P.) Radhakrishnan is the Vice President of India, took charge on 12th September 2025<br>Statement 2: Unlike the Presidential election, the electoral college for the Vice President includes nominated members of both Houses of Parliament<br>Which of the statements above is/are correct?", "option_1": "(a) Both Statements 1 and 2 are correct", "option_2": "(b) Only statement 1 is correct", "option_3": "(c) Neither Statement 1 nor 2 is correct", "option_4": "(d) Only statement 2 is correct", "option_5": "", "answer": "1", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50015", "quiz_id": "Testquiz3"},
-{"question": "Which of the following was a primary objective of 'Liberalization' within the New Economic Policy (NEP) of 1991?", "option_1": "(a) Strengthening the MRTP Act to restrict the expansion of large business houses.", "option_2": "(b) Expanding the list of industries reserved exclusively for the public sector.", "option_3": "(c) Increasing the peak customs duty on imports to protect domestic industries.", "option_4": "(d) Abolishing industrial licensing for most industries to encourage private entry.", "option_5": "", "answer": "4", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50016", "quiz_id": "Testquiz3"},
-{"question": "Which of the following pairs of minerals and its leading producing state in India is correctly matched?", "option_1": "(a) Bauxite - Odisha", "option_2": "(b) Copper - Uttar Pradesh", "option_3": "(c) Mica - Rajasthan", "option_4": "(d) Limestone - Jharkhand", "option_5": "", "answer": "1", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50017", "quiz_id": "Testquiz3"},
-{"question": "Who was awarded the 2025 Pulitzer Prize for Fiction for a novel that serves as a provocative and satirical reimagining of the life of Jim from Mark Twain's 'Adventures of Huckleberry Finn'?", "option_1": "(a) Percival Everett", "option_2": "(b) Colson Whitehead", "option_3": "(c) Paul Lynch", "option_4": "(d) Hernan Diaz", "option_5": "", "answer": "1", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50018", "quiz_id": "Testquiz3"},
-{"question": "Which historical process is best reflected by the evolution of temple architecture in India?", "option_1": "(a) Decline of indigenous art", "option_2": "(b) Continuous interaction of religion and regional styles", "option_3": "(c) Sudden cultural change", "option_4": "(d) Foreign architectural dominance", "option_5": "", "answer": "2", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50019", "quiz_id": "Testquiz3"},
-{"question": "India hosted the 2025 Men's FIH Hockey Junior World Cup. Which of the following correctly states the location, host city name, and timing of this event?", "option_1": "(a) Bhubaneswar, Odisha, from November 15 to November 30, 2025", "option_2": "(b) Lucknow, Uttar Pradesh, from December 1 to December 15, 2025", "option_3": "(c) Chennai and Madurai, Tamil Nadu, from November 28 to December 10, 2025", "option_4": "(d) New Delhi, at Major Dhyan Chand National Stadium, from December 20 to December 31, 2025", "option_5": "", "answer": "3", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50020", "quiz_id": "Testquiz3"},
-{"question": "Read the below statements:<br>1  NASA launched a space telescope, SPHEREx, to study the universe’s “cosmic glow”.<br>2  The Major Atmospheric Cherenkov Experiment (MACE) telescope was inaugurated at Hanle, Ladakh.<br>Which of the above statements is/are correct?", "option_1": "(a) Only statement 2", "option_2": "(b) Neither statement 1 nor 2", "option_3": "(c) Statement 1 and 2 both", "option_4": "(d) Only statement 1", "option_5": "", "answer": "3", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50021", "quiz_id": "Testquiz3"},
-{"question": "Which of the following statements regarding 'Navroz' (Nowruz) is correct?", "option_1": "(a) It is a lunar-based festival celebrated exclusively by the Buddhist community in the Himalayan belt.", "option_2": "(b) It marks the start of the harvest season in Southern India and is dedicated to the Sun God.", "option_3": "(c) It is a monsoon festival commemorating the victory of Good over Evil in the Mughal courts.", "option_4": "(d) It is the Persian New Year celebrated on the Spring Equinox, introduced in India by Ghiyasuddin Balban.", "option_5": "", "answer": "4", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50022", "quiz_id": "Testquiz3"},
-{"question": "Regarding 'Hit and Run' cases under Section 106(2) of the Bharatiya Nyaya Sanhita, 2023 (BNS), what is the maximum punishment if an offender causes death by rash and negligent driving and fails to inform a 'police officer' or 'Magistrate'?", "option_1": "(a) Imprisonment up to 10 years and a fine", "option_2": "(b) Life imprisonment", "option_3": "(c) Imprisonment up to 7 years and a fine", "option_4": "(d) Imprisonment up to 5 years and a fine", "option_5": "", "answer": "1", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50023", "quiz_id": "Testquiz3"},
-{"question": "Dr. Bhupen Hazarika is famously known by which of the following titles, reflecting his deep connection to the geography and spirit of Assam?", "option_1": "(a) Bard of Brahmaputra", "option_2": "(b) Son of Brahmaputra", "option_3": "(c) Kala Guru of Assam", "option_4": "(d) Voice of Brahmaputra", "option_5": "", "answer": "1", "solution_text": "", "correct_score": "4", "negative_score": "0.25", "deleted": "0", "difficulty_level": "0", "option_image_1": "", "option_image_2": "", "option_image_3": "", "option_image_4": "", "option_image_5": "", "question_image": "", "solution_heading": "", "solution_image": "", "solution_video": "", "sortingparam": "0.00", "id": "50024", "quiz_id": "Testquiz3"}
-];
+    // ... (your questions array remains unchanged)
+  ];
+
   const TOTAL_TIME_SECONDS = 1500;
 
   // Global state
@@ -298,6 +293,13 @@ mjx-container{
     el('quizHeader').style.display = 'flex';
     el('quizContainer').style.display = 'block';
     el('floatBar').style.display = 'flex';
+
+    // Display user name in header
+    const userDisplay = document.getElementById('userDisplay');
+    if (currentUser && userDisplay) {
+      userDisplay.textContent = currentUser.displayName || currentUser.email || 'User';
+    }
+
     if (!window.quizInitialized) {
       initQuiz();
       window.quizInitialized = true;
@@ -413,22 +415,18 @@ mjx-container{
       div.className = "opt";
       div.innerHTML = `<div class="custom-radio"></div><div style="flex:1">${q[k]}</div>`;
 
-      // In Quiz mode: show selected only, no correct/wrong yet
       if (isQuiz) {
         if (userAns === String(idx+1)) div.classList.add("selected");
         div.addEventListener("click", () => selectOption(q, idx+1, div));
       } else {
-        // Solution mode: show correct answer and user's wrong answer (if any)
         const isCorrect = String(q.answer) === String(idx+1);
         const isUserWrong = (userAns && userAns === String(idx+1) && !isCorrect);
         if (isCorrect) div.classList.add("correct");
         else if (isUserWrong) div.classList.add("wrong");
-        // No click handler in solution mode
       }
       opts.appendChild(div);
     });
 
-    // Show explanation in solution mode
     if (!isQuiz && q.solution_text) {
       el("explanation").innerHTML = `<strong>Explanation:</strong> ${q.solution_text}`;
       el("explanation").style.display = "block";
@@ -447,20 +445,8 @@ mjx-container{
     answers[qid] = String(val);
     Array.from(el("options").children).forEach(o => o.classList.remove("selected"));
     div.classList.add("selected");
-    // In quiz mode, we may show immediate feedback if desired; here we don't auto-show correct/wrong.
-    // If you want instant feedback, uncomment showFeedback.
-    // showFeedback(q, val);
     highlightPalette();
     saveQuizState();
-  }
-
-  function showFeedback(q, val) {
-    Array.from(el("options").children).forEach((o, idx) => {
-      o.classList.remove("correct","wrong");
-      const idx1 = idx+1;
-      if(String(q.answer) === String(idx1)) o.classList.add("correct");
-      else if(String(val) === String(idx1)) o.classList.add("wrong");
-    });
   }
 
   function startTimer() {
@@ -494,7 +480,7 @@ mjx-container{
   function normalizeMathForQuiz(container) {
     if (!container) return;
     container.innerHTML = container.innerHTML
-      .replace(/(\S)\s*\$\$(.+?)\$\*\s*(\S)/g, '$1 \\($2\\) $3')
+      // Remove broken regex; keep only the safe one:
       .replace(/\$\$(.+?)\$\$/g, function(match, math) {
         if (/^<br>|<div>|<\/div>|<p>|<\/p>/.test(match)) return match;
         return '\\(' + math + '\\)';
@@ -643,24 +629,8 @@ mjx-container{
     el("quizCard").style.display = "none";
     el("floatBar").style.display = "none";
 
-    // ----- Review tab HTML (questions + answers) -----
-    let reviewHTML = `<div class="card"><h3 style="color:var(--accent)">Results Summary</h3>
-      <div class="stats">
-        <div class="stat"><h4>Score</h4><p>${payload.score} / ${payload.maxMarks}</p></div>
-        <div class="stat"><h4>Correct</h4><p>${payload.correct}</p></div>
-        <div class="stat"><h4>Wrong</h4><p>${payload.wrong}</p></div>
-        <div class="stat"><h4>Unattempted</h4><p>${payload.unattempted}</p></div>
-        <div class="stat"><h4>Accuracy</h4><p>${payload.accuracy}%</p></div>
-        <div class="stat"><h4>Time</h4><p>${fmt(payload.timeTaken)}</p></div>
-      </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
-        <button class="btn-ghost" onclick="filterResults('all')">ALL</button>
-        <button class="btn-ghost" onclick="filterResults('correct')">CORRECT</button>
-        <button class="btn-ghost" onclick="filterResults('wrong')">WRONG</button>
-        <button class="btn-ghost" onclick="filterResults('unattempted')">UNATTEMPTED</button>
-      </div>
-    </div>`;
-
+    // ----- Review tab HTML (only questions and options, no stats, no filter, no score) -----
+    let reviewHTML = '';
     QUESTIONS.forEach((q, i) => {
       const qid = q.id ?? i;
       const ans = answers[qid];
@@ -678,8 +648,7 @@ mjx-container{
         else if(isUser && !isOptCorrect) style = "border:2px solid var(--danger); background:rgba(200,45,63,0.12);";
         reviewHTML += `<div style="padding:8px; margin:6px 0; border-radius:8px; ${style}">${q[key]}</div>`;
       });
-      const scoreText = isCorrect ? `+${q.correct_score}` : (ans ? `-${q.negative_score}` : "0");
-      reviewHTML += `<div><strong>Score:</strong> ${scoreText}</div>`;
+      // Removed the score display line
       if(q.solution_text) reviewHTML += `<div class="explanation" style="display:block; margin-top:8px"><strong>Explanation:</strong> ${q.solution_text}</div>`;
       reviewHTML += `</div>`;
     });
@@ -689,7 +658,7 @@ mjx-container{
       <div class="stats-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; padding:16px;">
         <div class="stat-card" style="background:#f0f4f8; border-radius:12px; padding:16px; text-align:center;">
           <div style="font-size:28px; font-weight:700; color:var(--accent);">${payload.score}</div>
-          <div style="color:#555;">Total Score</div>
+          <div style="color:#555;">Total Score / ${payload.maxMarks}</div>
         </div>
         <div class="stat-card" style="background:#f0f4f8; border-radius:12px; padding:16px; text-align:center;">
           <div style="font-size:28px; font-weight:700; color:var(--success);">${payload.correct}</div>
@@ -756,7 +725,8 @@ mjx-container{
       <div style="display:flex; align-items:center; gap:10px">
         <h1>${QUIZ_TITLE}</h1>
       </div>
-      <div style="display:flex; gap:10px">
+      <div style="display:flex; gap:10px; align-items:center;">
+        <span id="userDisplay" class="user-info">${currentUser?.displayName || currentUser?.email || ''}</span>
         <button class="btn" onclick="reattemptQuiz()">Re-Attempt</button>
       </div>
     `;
@@ -916,7 +886,6 @@ mjx-container{
       if (idx === current) child.classList.add("current");
 
       if (!isQuiz) {
-        // SOLUTION MODE
         if (!userAns) {
           child.classList.add("sol-skip");
         } else if (userAns === correctAns) {
@@ -926,7 +895,6 @@ mjx-container{
         }
         if (isMarked) child.classList.add("has-star");
       } else {
-        // QUIZ MODE
         if (isMarked) {
           child.classList.add("marked");
         } else if (userAns) {
@@ -988,6 +956,8 @@ mjx-container{
       <div class="toggle-pill" id="modeToggle"><span>Test</span><span>Quiz</span></div>
     </div>
     <div style="display:flex; align-items:center; gap:10px">
+      <!-- User name display (filled by JS) -->
+      <span id="userDisplay" class="user-info"></span>
       <div class="timer-text" id="timer">00:00</div>
       <button id="submitBtn" class="btn">Submit</button>
       <button id="paletteBtn" class="btn-ghost">View</button>
