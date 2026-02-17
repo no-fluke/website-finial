@@ -166,7 +166,7 @@
     auth.createUserWithEmailAndPassword(email, pass)
       .then(res => res.user.updateProfile({ displayName: name }))
       .then(() => {
-        window.location.href = "/";
+        window.location.href = "index.html";
       })
       .catch(err => {
         console.error(err);
