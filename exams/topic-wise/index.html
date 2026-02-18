@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>TOPIC WISE | RANKUP </title>
+<title>Topic Wise | RANKUP</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -11,7 +11,7 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  background: linear-gradient(135deg,#e0f2fe,#f8fafc);
+background: linear-gradient(135deg,#e0f2fe,#f8fafc);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -36,11 +36,27 @@ header {
   color: #111827;
 }
 
-.back {
+.back-link {
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
   color: #4f46e5;
+}
+
+.page-title {
+  margin-bottom: 20px;
+}
+
+.page-title h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #111827;
+}
+
+.page-title p {
+  margin: 6px 0 0;
+  color: #4b5563;
+  font-size: 15px;
 }
 
 /* CARD */
@@ -50,197 +66,80 @@ header {
   padding: 24px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.1);
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .card h2 {
-  margin: 0 0 8px 0;
+  margin: 0;
+  font-size: 20px;
   color: #111827;
-  font-size: 1.5rem;
-  /* indicator span removed, no pointer cursor */
 }
 
 .card p {
-  color: #4b5563;
-  font-size: 15px;
-  margin-bottom: 15px;
-}
-
-/* TABS */
-.tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.tab-button {
-  padding: 8px 16px;
-  background: #f3f4f6;
-  border: none;
-  border-radius: 30px;
-  font-weight: 600;
+  margin: 0;
   font-size: 14px;
-  color: #374151;
-  cursor: pointer;
-  transition: 0.2s;
+  color: #4b5563;
 }
 
-.tab-button.active {
+.btn {
+  margin-top: 6px;
+  padding: 10px 14px;
   background: #4f46e5;
   color: white;
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-/* QUIZ ITEMS */
-.quiz-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 14px;
-  margin-bottom: 8px;
-  background: #f3f4f6;
   border-radius: 8px;
   text-decoration: none;
-  color: #111827;
-  transition: background 0.2s ease;
-}
-
-.quiz-item:hover {
-  background: #e5e7eb;
-}
-
-.quiz-name {
+  font-size: 14px;
   font-weight: 600;
+  width: fit-content;
 }
 
-.start-btn {
-  background: #4f46e5;
-  color: white;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  transition: background 0.2s;
-}
-
-.start-btn:hover {
+.btn:hover {
   background: #4338ca;
-}
-
-/* quiz-list always visible, no sliding */
-.quiz-list {
-  display: block;
-  overflow: visible;
-  max-height: none;      /* removes any height restriction */
 }
 </style>
 </head>
+
 <body>
 
 <div class="wrapper">
 
 <header>
-  <div class="brand">TOPIC WISE</div>
-  <a class="back" href="../index.html">← Back to home</a>
+  <div class="brand">RANKUP</div>
+  <a class="back-link" href="../../index.html">← Back to Home</a>
 </header>
 
-<!-- ONLY TOPIC WISE SECTION (sectional mocks) remains — full mock card removed -->
+<div class="page-title">
+  <h1>Topic Wise</h1>
+  <p>Select your subject and start practicing</p>
+</div>
+
 <div class="card">
-  <h2>Topic wise mocks</h2>   <!-- indicator and onclick removed -->
-  <p>Practice individual subjects for all exams</p>
-
-  <div class="quiz-list" id="topicQuizList">
-    <!-- Tabs -->
-    <div class="tabs">
-      <button class="tab-button active" onclick="switchTab(event, 'quant')">Quant</button>
-      <button class="tab-button" onclick="switchTab(event, 'reasoning')">Reasoning</button>
-      <button class="tab-button" onclick="switchTab(event, 'english')">English</button>
-      <button class="tab-button" onclick="switchTab(event, 'gk')">GK</button>
-    </div>
-
-    <!-- Tab Contents -->
-    <div class="tab-content active" id="quant">
-      <a class="quiz-item" href="topic/Testquiz3.html">
-        <span class="quiz-name">testquiz</span>
-        <span class="start-btn">Start Quiz</span>
-      </a>
-      <a class="quiz-item" href="topic/MyQuiz.html">
-        <span class="quiz-name">full mock test</span>
-        <span class="start-btn">Start Quiz</span>
-      </a>
-    </div>
-
-    <div class="tab-content" id="reasoning">
-      <a class="quiz-item" href="topic/reasoning1.html">
-        <span class="quiz-name">Coding-Decoding</span>
-        <span class="start-btn">Start Quiz</span>
-      </a>
-      <a class="quiz-item" href="topic/reasoning2.html">
-        <span class="quiz-name">Syllogism</span>
-        <span class="start-btn">Start Quiz</span>
-      </a>
-    </div>
-
-    <div class="tab-content" id="english">
-      <a class="quiz-item" href="topic/english1.html">
-        <span class="quiz-name">Synonyms & Antonyms</span>
-        <span class="start-btn">Start Quiz</span>
-      </a>
-      <a class="quiz-item" href="topic/english2.html">
-        <span class="quiz-name">Idioms & Phrases</span>
-        <span class="start-btn">Start Quiz</span>
-      </a>
-    </div>
-
-    <div class="tab-content" id="gk">
-      <a class="quiz-item" href="topic/gk1.html">
-        <span class="quiz-name">History</span>
-        <span class="start-btn">Start Quiz</span>
-      </a>
-      <a class="quiz-item" href="topic/gk2.html">
-        <span class="quiz-name">Polity</span>
-        <span class="start-btn">Start Quiz</span>
-      </a>
-    </div>
-  </div>
+  <h2>ENGLISH</h2>
+  <p>Topic Wise English Mocks </p>
+  <a class="btn" href="cgl/index.html">Explore ENGLISH</a>
 </div>
 
-<!-- ===== FULL MOCK SECTION DELETED ===== -->
-
+<div class="card">
+  <h2>MATHEMATICS</h2>
+  <p>Topic Wise Mathematics mocks </p>
+  <a class="btn" href="chsl/index.html">Explore MATHEMATICS</a>
 </div>
 
-<script>
-// Toggle function completely removed – no sliding, no expansion.
-// Only tab switching remains active.
+<div class="card">
+  <h2>GENERAL STUDIES</h2>
+  <p>Topic Wise General studies mocks</p>
+  <a class="btn" href="gd/index.html">Explore GENERAL STUDIES </a>
+</div>
 
-// Switch between tabs (unchanged)
-function switchTab(event, tabId) {
-  // Prevent accidental interference (no toggle handler now, but keep safe)
-  event.stopPropagation();
+<div class="card">
+  <h2>REASONING</h2>
+  <p>Topic Wise Reasoning mocks</p>
+  <a class="btn" href="gd/index.html">Explore REASONING</a>
+</div>
 
-  // Find the parent card -> tabs and tab contents
-  const card = event.target.closest('.card');
-  const tabs = card.querySelectorAll('.tab-button');
-  const contents = card.querySelectorAll('.tab-content');
-
-  // Remove active class from all tabs and contents
-  tabs.forEach(tab => tab.classList.remove('active'));
-  contents.forEach(content => content.classList.remove('active'));
-
-  // Add active class to clicked tab
-  event.target.classList.add('active');
-
-  // Show corresponding content
-  document.getElementById(tabId).classList.add('active');
-}
-</script>
+</div>
 
 </body>
 </html>
