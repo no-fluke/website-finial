@@ -52,49 +52,112 @@ header {
   margin-bottom: 20px;
 }
 
-h2 { margin-top: 0; color: #111827; }
-p { color: #4b5563; font-size: 15px; }
+.card h2 {
+  margin: 0 0 8px 0;
+  color: #111827;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+}
 
-/* TOGGLE BUTTON */
-.toggle-btn {
-  margin-top: 10px;
-  padding: 8px 14px;
+.card h2 .indicator {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #4f46e5;
+  width: 24px;
+  display: inline-block;
+  text-align: center;
+}
+
+.card p {
+  color: #4b5563;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  padding: 8px 16px;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tab-button.active {
   background: #4f46e5;
   color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
 }
 
-/* SLIDER AREA */
-.quiz-list {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-  margin-top: 10px;
+.tab-content {
+  display: none;
 }
 
-/* LIST ITEMS */
-.quiz-item {
+.tab-content.active {
   display: block;
+}
+
+/* QUIZ ITEMS */
+.quiz-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 12px 14px;
   margin-bottom: 8px;
   background: #f3f4f6;
   border-radius: 8px;
   text-decoration: none;
   color: #111827;
-  font-weight: 600;
-  transition: background 0.2s ease, transform 0.15s ease;
+  transition: background 0.2s ease;
 }
 
 .quiz-item:hover {
   background: #e5e7eb;
-  transform: translateX(4px);
+}
+
+.quiz-name {
+  font-weight: 600;
+}
+
+.start-btn {
+  background: #4f46e5;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.start-btn:hover {
+  background: #4338ca;
+}
+
+/* SLIDER */
+.quiz-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.quiz-list.expanded {
+  max-height: 1000px; /* large enough to show all content */
 }
 </style>
 </head>
-
 <body>
 
 <div class="wrapper">
@@ -104,54 +167,164 @@ p { color: #4b5563; font-size: 15px; }
   <a class="back" href="../index.html">← Back to SSC</a>
 </header>
 
-<!-- TOPIC WISE -->
+<!-- TOPIC WISE SECTION -->
 <div class="card">
-  <h2>Topic-wise Quizzes</h2>
+  <h2 onclick="toggleSection('topicQuizList', this)">
+    <span class="indicator" id="topicIndicator">+</span>
+    Topic-wise Quizzes
+  </h2>
   <p>Practice individual subjects for SSC CGL</p>
 
-  <button class="toggle-btn" onclick="toggleSection('topicList', this)">
-    Show Quizzes ▼
-  </button>
+  <div class="quiz-list" id="topicQuizList">
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-button active" onclick="switchTab(event, 'quant')">Quant</button>
+      <button class="tab-button" onclick="switchTab(event, 'reasoning')">Reasoning</button>
+      <button class="tab-button" onclick="switchTab(event, 'english')">English</button>
+      <button class="tab-button" onclick="switchTab(event, 'gk')">GK</button>
+    </div>
 
-  <div class="quiz-list" id="topicList">
-    <a class="quiz-item" href="topic/Testquiz3.html">testquiz</a>
-    <a class="quiz-item" href="topic/MyQuiz.html">full mock test</a>
-    <a class="quiz-item" href="topic/geography.html">Geography</a>
-    <a class="quiz-item" href="topic/economics.html">Economics</a>
+    <!-- Tab Contents -->
+    <div class="tab-content active" id="quant">
+      <a class="quiz-item" href="topic/Testquiz3.html">
+        <span class="quiz-name">testquiz</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+      <a class="quiz-item" href="topic/MyQuiz.html">
+        <span class="quiz-name">full mock test</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+    </div>
+
+    <div class="tab-content" id="reasoning">
+      <a class="quiz-item" href="topic/reasoning1.html">
+        <span class="quiz-name">Coding-Decoding</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+      <a class="quiz-item" href="topic/reasoning2.html">
+        <span class="quiz-name">Syllogism</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+    </div>
+
+    <div class="tab-content" id="english">
+      <a class="quiz-item" href="topic/english1.html">
+        <span class="quiz-name">Synonyms & Antonyms</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+      <a class="quiz-item" href="topic/english2.html">
+        <span class="quiz-name">Idioms & Phrases</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+    </div>
+
+    <div class="tab-content" id="gk">
+      <a class="quiz-item" href="topic/gk1.html">
+        <span class="quiz-name">History</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+      <a class="quiz-item" href="topic/gk2.html">
+        <span class="quiz-name">Polity</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+    </div>
   </div>
 </div>
 
-<!-- FULL MOCK -->
+<!-- FULL MOCK SECTION with YEAR TABS -->
 <div class="card">
-  <h2>Full Length Mock Tests</h2>
+  <h2 onclick="toggleSection('mockQuizList', this)">
+    <span class="indicator" id="mockIndicator">+</span>
+    Full Length Mock Tests
+  </h2>
   <p>Complete SSC CGL mock exams</p>
 
-  <button class="toggle-btn" onclick="toggleSection('mockList', this)">
-    Show Mocks ▼
-  </button>
+  <div class="quiz-list" id="mockQuizList">
+    <!-- Year Tabs -->
+    <div class="tabs">
+      <button class="tab-button active" onclick="switchTab(event, 'mock2025')">2025</button>
+      <button class="tab-button" onclick="switchTab(event, 'mock2024')">2024</button>
+      <button class="tab-button" onclick="switchTab(event, 'mock2023')">2023</button>
+    </div>
 
-  <div class="quiz-list" id="mockList">
-    <a class="quiz-item" href="full/mock1.html">Mock Test 1</a>
-    <a class="quiz-item" href="full/mock2.html">Mock Test 2</a>
+    <!-- Tab Contents -->
+    <div class="tab-content active" id="mock2025">
+      <a class="quiz-item" href="full/mock2025-1.html">
+        <span class="quiz-name">Mock Test 1 (2025)</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+      <a class="quiz-item" href="full/mock2025-2.html">
+        <span class="quiz-name">Mock Test 2 (2025)</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+      <a class="quiz-item" href="full/mock2025-3.html">
+        <span class="quiz-name">Mock Test 3 (2025)</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+    </div>
+
+    <div class="tab-content" id="mock2024">
+      <a class="quiz-item" href="full/mock2024-1.html">
+        <span class="quiz-name">Mock Test 1 (2024)</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+      <a class="quiz-item" href="full/mock2024-2.html">
+        <span class="quiz-name">Mock Test 2 (2024)</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+    </div>
+
+    <div class="tab-content" id="mock2023">
+      <a class="quiz-item" href="full/mock2023-1.html">
+        <span class="quiz-name">Mock Test 1 (2023)</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+      <a class="quiz-item" href="full/mock2023-2.html">
+        <span class="quiz-name">Mock Test 2 (2023)</span>
+        <span class="start-btn">Start Quiz</span>
+      </a>
+    </div>
   </div>
 </div>
 
 </div>
 
 <script>
-function toggleSection(id, btn) {
-  const section = document.getElementById(id);
-
-  if (section.style.maxHeight) {
-    section.style.maxHeight = null;
-    btn.innerHTML = btn.innerHTML.replace("▲", "▼");
+// Toggle section expansion when heading is clicked
+function toggleSection(sectionId, headingElement) {
+  const section = document.getElementById(sectionId);
+  const indicator = headingElement.querySelector('.indicator');
+  
+  section.classList.toggle('expanded');
+  
+  if (section.classList.contains('expanded')) {
+    indicator.textContent = '−';  // minus sign
   } else {
-    section.style.maxHeight = section.scrollHeight + "px";
-    btn.innerHTML = btn.innerHTML.replace("▼", "▲");
+    indicator.textContent = '+';  // plus sign
   }
+}
+
+// Switch between tabs
+function switchTab(event, tabId) {
+  // Prevent the click from bubbling up to the h2 toggle
+  event.stopPropagation();
+
+  // Find the parent card -> tabs and tab contents
+  const card = event.target.closest('.card');
+  const tabs = card.querySelectorAll('.tab-button');
+  const contents = card.querySelectorAll('.tab-content');
+
+  // Remove active class from all tabs and contents
+  tabs.forEach(tab => tab.classList.remove('active'));
+  contents.forEach(content => content.classList.remove('active'));
+
+  // Add active class to clicked tab
+  event.target.classList.add('active');
+
+  // Show corresponding content
+  document.getElementById(tabId).classList.add('active');
 }
 </script>
 
 </body>
 </html>
-
